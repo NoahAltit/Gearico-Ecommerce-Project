@@ -12,7 +12,7 @@ const SectionFour = () => {
   const { data } = useContext(DataContext);
 
   if (!data) {
-    return <p>Loading...</p>;
+    return <p></p>;
   }
 
   return (

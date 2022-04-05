@@ -18,7 +18,7 @@ const SectionTwo = () => {
   const history = useHistory();
 
   if (!data) {
-    return <p>Loading...</p>;
+    return <p></p>;
   }
 
   return (

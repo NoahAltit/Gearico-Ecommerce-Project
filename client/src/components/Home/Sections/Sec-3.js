@@ -9,10 +9,10 @@ const SectionThree = () => {
 
   useEffect(() => {
     getItems();
-  }, [])
+  }, []);
 
   if (!data) {
-    return <p>Loading...</p>;
+    return <p></p>;
   }
   const tenFeaturedItems = data;
 
