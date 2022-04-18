@@ -8,3 +8,5 @@ To develop this website, we used the MERN stack, which stands for "MongoDB, Expr
 The data has been provided by our instructors, we had to plan and develop the rest.
 For planning the structure and the design, we used Figma. 
 As a complete beginner, I was very impressed by how quickly we got the structure done by following the plan built on Figma.
+
+The screenshots are attached to the folder above.
