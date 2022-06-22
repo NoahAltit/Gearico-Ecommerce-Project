@@ -32,14 +32,16 @@ const Products = () => {
     // fetching category-specific items if a category has been selected...
     if (catSelection || catParam) {
       fetch(
-        `/api/get-items/cat/${catSelection}?start=${startPoint}&limit=${numItems}`
+        `http://localhost:4000/api/get-items/cat/${catSelection}?start=${startPoint}&limit=${numItems}`
       )
         .then((res) => res.json())
         .then((data) => setProducts(data.data))
         .catch((err) => console.log("error:", err));
     } else {
       // ...otherwise, fetching all items
-      fetch(`/api/get-items?start=${startPoint}&limit=${numItems}`)
+      fetch(
+        `http://localhost:4000/api/get-items?start=${startPoint}&limit=${numItems}`
+      )
         .then((res) => res.json())
         .then((data) => setProducts(data.data))
         .catch((err) => console.log("error:", err));

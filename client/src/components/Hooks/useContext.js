@@ -9,13 +9,13 @@ export const DataProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
 
   const getItems = () => {
-    fetch("/api/get-items")
+    fetch("http://localhost:4000/api/get-items")
       .then((res) => res.json())
       .then((data) => {
         console.log(data.data);
         setData(data.data);
       });
-  }
+  };
 
   // updating the CART total
   useEffect(() => {
@@ -31,7 +31,9 @@ export const DataProvider = ({ children }) => {
   };
 
   return (
-    <DataContext.Provider value={{ data, cart, setCart, total, calcItemTotal, getItems }}>
+    <DataContext.Provider
+      value={{ data, cart, setCart, total, calcItemTotal, getItems }}
+    >
       {children}
     </DataContext.Provider>
   );

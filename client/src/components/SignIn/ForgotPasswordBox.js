@@ -4,7 +4,7 @@ const ForgotPasswordBox = ({ setPageDisplay }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
     const email = ev.target[0].value;
-    fetch("/api/check-email", {
+    fetch("http://localhost:4000/api/check-email", {
       method: "POST",
       body: JSON.stringify({ email }),
       headers: {
