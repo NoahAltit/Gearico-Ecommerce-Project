@@ -2,6 +2,7 @@
 
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 
 const PORT = 4000;
 
@@ -12,14 +13,14 @@ const {
   getItemsByBodyLocation,
   placeOrder,
   getCompanyById,
-} = require("./handlersLocal");
+} = require("./handlers");
 
 const {
   checkEmail,
   loginAccount,
   createAccount,
   getOrdersByEmail,
-  updateAccountInfo
+  updateAccountInfo,
 } = require("./handlersAccounts");
 
 express()
@@ -35,10 +36,12 @@ express()
     next();
   })
   .use(morgan("tiny"))
+  .use(cors())
   .use(express.static("./server/assets"))
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
+  .options("*", cors())
 
   // REST endpoints
   .get("/api/get-items", getItems)

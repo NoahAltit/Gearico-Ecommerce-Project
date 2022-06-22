@@ -10,7 +10,7 @@ const { MongoClient } = require("mongodb");
 
 require("dotenv").config();
 const { MONGO_URI } = process.env;
-// console.log("MONGO:", MONGO_URI);
+console.log(MONGO_URI);
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

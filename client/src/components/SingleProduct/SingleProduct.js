@@ -15,7 +15,7 @@ const SingleProduct = ({ modal, setModal }) => {
 
   // fetching the product info
   useEffect(() => {
-    fetch(`/api/get-item/${productId}`)
+    fetch(`http://localhost:4000/api/get-item/${productId}`)
       .then((res) => res.json())
       .then((data) => setProductInfo(data.data))
       .catch((err) => console.log("error:", err));

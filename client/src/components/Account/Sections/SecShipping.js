@@ -9,8 +9,8 @@ const SecShipping = () => {
 
   const handleUpdate = (ev) => {
     ev.preventDefault();
-    setStatus("...")
-    let updateObject = {...userInfo}
+    setStatus("...");
+    let updateObject = { ...userInfo };
     updateObject["shipping"] = {
       firstName: ev.target[0].value,
       lastName: ev.target[1].value,
@@ -21,93 +21,92 @@ const SecShipping = () => {
       country: ev.target[6].value,
     };
 
-    fetch("/api/update-account", {
+    fetch("http://localhost:4000/api/update-account", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updateObject)
+      body: JSON.stringify(updateObject),
     })
-    .then(res=> res.json())
-    .then((data) => {
-      if (data.status === 200) {
-        setUserInfo(data.data);
-        setStatus("Updated!")
-      } else setStatus("Try Again")
-    })
-    .catch(err => console.log("error:", err))
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 200) {
+          setUserInfo(data.data);
+          setStatus("Updated!");
+        } else setStatus("Try Again");
+      })
+      .catch((err) => console.log("error:", err));
+  };
 
-    return (
+  return (
     <Wrapper>
-    <FormContent onSubmit={(ev) => handleUpdate(ev)}>
-      <FormGroup>
+      <FormContent onSubmit={(ev) => handleUpdate(ev)}>
+        <FormGroup>
+          <Input
+            name="firstName"
+            type="text"
+            placeholder="First name"
+            defaultValue={userInfo?.shipping?.firstName}
+            required
+          />
+          <Input
+            name="lastName"
+            type="text"
+            placeholder="Last name"
+            defaultValue={userInfo?.shipping?.lastName}
+            required
+          />
+        </FormGroup>
         <Input
-          name="firstName"
-          type="text"
-          placeholder="First name"
-          defaultValue={userInfo?.shipping?.firstName}
+          name="address"
+          type="address"
+          placeholder="Address"
+          defaultValue={userInfo?.shipping?.address}
           required
         />
-        <Input
-          name="lastName"
-          type="text"
-          placeholder="Last name"
-          defaultValue={userInfo?.shipping?.lastName}
-          required
-        />
-      </FormGroup>
-      <Input
-        name="address"
-        type="address"
-        placeholder="Address"
-        defaultValue={userInfo?.shipping?.address}
-        required
-      />
-      <FormGroup>
-        <Input
-          name="city"
-          type="text"
-          placeholder="City"
-          defaultValue={userInfo?.shipping?.city}
-          required
-        />
-        <Input
-          name="province"
-          type="text"
-          placeholder="Province"
-          defaultValue={userInfo?.shipping?.province}
-          required
-        />
-      </FormGroup>
-      <FormGroup>
-        <Input
-          name="postcode"
-          type="text"
-          placeholder="Postal Code"
-          defaultValue={userInfo?.shipping?.postcode}
-          required
-        />
-        <Input
-          name="country"
-          type="text"
-          placeholder="Country"
-          defaultValue={userInfo?.shipping?.country}
-          required
-        />
-      </FormGroup>
-    <Button type="submit">{status}</Button>
-    </FormContent>
-  </Wrapper>
-);
+        <FormGroup>
+          <Input
+            name="city"
+            type="text"
+            placeholder="City"
+            defaultValue={userInfo?.shipping?.city}
+            required
+          />
+          <Input
+            name="province"
+            type="text"
+            placeholder="Province"
+            defaultValue={userInfo?.shipping?.province}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Input
+            name="postcode"
+            type="text"
+            placeholder="Postal Code"
+            defaultValue={userInfo?.shipping?.postcode}
+            required
+          />
+          <Input
+            name="country"
+            type="text"
+            placeholder="Country"
+            defaultValue={userInfo?.shipping?.country}
+            required
+          />
+        </FormGroup>
+        <Button type="submit">{status}</Button>
+      </FormContent>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
   margin: 40px 20px;
   padding: 0 20px;
 `;
-const FormContent = styled.form`
-`;
+const FormContent = styled.form``;
 
 const FormGroup = styled.div`
   display: flex;
@@ -141,6 +140,6 @@ const Button = styled.button`
   &:hover {
     background: slateblue;
   }
-  `;
+`;
 
 export default SecShipping;

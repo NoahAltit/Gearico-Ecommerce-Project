@@ -1,14 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import borderimg from "../../../assets/BorderImg.gif";
 
-const Input = ({
-  name,
-  type,
-  placeholder,
-  // handleChange,
-  defaultValue,
-  section,
-}) => {
+const Input = ({ name, type, placeholder, defaultValue, section }) => {
   return (
     <Wrapper>
       <label htmlFor={name}>{placeholder}</label>
@@ -18,7 +10,6 @@ const Input = ({
         section={section}
         defaultValue={defaultValue}
         placeholder={placeholder}
-        // onChange={(ev) => handleChange(ev.target.value, name, section)}
       />
     </Wrapper>
   );

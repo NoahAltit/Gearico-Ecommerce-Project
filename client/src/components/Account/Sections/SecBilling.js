@@ -19,7 +19,7 @@ const SecBilling = () => {
       cvv: ev.target[4].value,
     };
 
-    fetch("/api/update-account", {
+    fetch("http://localhost:4000/api/update-account", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -30,8 +30,8 @@ const SecBilling = () => {
       .then((data) => {
         if (data.status === 200) {
           setUserInfo(data.data);
-          setStatus("Updated!")
-        } else setStatus("Try Again")
+          setStatus("Updated!");
+        } else setStatus("Try Again");
       })
       .catch((err) => console.log("error:", err));
   };
@@ -120,6 +120,6 @@ const Button = styled.button`
   &:hover {
     background: slateblue;
   }
-  `;
+`;
 
 export default SecBilling;
