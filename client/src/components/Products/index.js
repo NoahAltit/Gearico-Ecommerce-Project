@@ -8,6 +8,7 @@ import Sidebar from "./Sidebar";
 import ProductPreview from "./ProductPreview";
 import PageSelect from "./PageSelect";
 import { useParams } from "react-router-dom";
+import Load from "../Loader/Load";
 
 const Products = () => {
   const [catSelection, setCatSelection] = useState(null);
@@ -48,7 +49,9 @@ const Products = () => {
     }
   }, [currentPage, catSelection]);
 
-  if (!products) return <div>Loading...</div>;
+  if (!products) {
+    return <Load />;
+  }
 
   return (
     <>
