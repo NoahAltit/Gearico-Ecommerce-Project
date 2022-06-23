@@ -5,12 +5,13 @@ import { DataContext } from "../../Hooks/useContext";
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
+import Load from "../../Loader/Load";
 
 const SectionOne = () => {
   const { data } = useContext(DataContext);
 
   if (!data) {
-    return <p>Loading...</p>;
+    return <Load />;
   }
 
   return (
